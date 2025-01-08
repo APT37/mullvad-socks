@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+
+name="Mullvad Socks5 Web Service"
+command="/usr/bin/mvs_web"
+command_user="nobody"
+supervisor="supervise-daemon"
+
+# change this to bind on a different port
+export PORT=8080
+
+depend() {
+    need net
+}

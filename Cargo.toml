@@ -1,0 +1,35 @@
+[workspace]
+resolver = "2"
+members = ["mvs_cli", "mvs_lib", "mvs_web"]
+
+[workspace.package]
+edition = "2021"
+description = "Filter Mullvad's SOCKS5 proxies by country, city, datacenter, weight and online status"
+readme = "README.md"
+license = "MIT"
+
+[profile.dev]
+opt-level = 0
+debug = true
+strip = false
+debug-assertions = true
+overflow-checks = true
+lto = false
+panic = 'unwind'
+incremental = true
+codegen-units = 256
+rpath = false
+
+[profile.release]
+opt-level = 3
+debug = false
+strip = "symbols"
+debug-assertions = false
+overflow-checks = false
+lto = "fat"
+panic = 'unwind'
+incremental = true
+codegen-units = 16
+rpath = false
+
+[workspace.dependencies]
