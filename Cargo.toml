@@ -6,7 +6,6 @@ members = ["mvs_cli", "mvs_lib", "mvs_web"]
 edition = "2021"
 description = "Filter Mullvad's SOCKS5 proxies by country, city, datacenter, weight and online status"
 readme = "README.md"
-license = "MIT"
 
 [profile.dev]
 opt-level = 0
