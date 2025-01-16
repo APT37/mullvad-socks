@@ -1,20 +1,14 @@
 ## Mullvad Socks Proxy Filter (CLI)
 
-Based on [this library](https://crates.io/crates/mullvad_socks).
-
-There is also a [WebApp](https://crates.io/crates/mvs_web).
-
-### Usage
-
 `mvs_cli [OPTIONS]`
 
 *While you can use multiple types of location identifiers in a single query, it's not advised to do so, as proxies are filtered level by level - `country` > `city` > `datacenter` - this means only proxies matching all given levels will be left in the list.*
 
 | Option | Value | Effect |
 | --- | --- | --- |
-| -C, --countries | {countries} | see '-l countries' |
-| -c, --cities | {cities} | see '-l cities' |
-| -d, --datacenters | {datacenters} | see '-l datacenters' |
+| -C, --countries | countries | see '-l countries' |
+| -c, --cities | cities | see '-l cities' |
+| -d, --datacenters | datacenters | see '-l datacenters' |
 | -w, --weight | 0-65535 [default: 100] | Weight limit (inclusive) |
 | -o, --offline | hide, show, only [default: hide] | Print offline proxies |
 | -s, --style | v4, v6, hostname [default: v4] | Output type |

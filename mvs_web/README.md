@@ -1,11 +1,5 @@
 ## Mullvad Socks Proxy Filter (HTTP API)
 
-Based on [this library](https://crates.io/crates/mullvad_socks).
-
-There is also a [CLI](https://crates.io/crates/mvs_cli).
-
-### Configuration
-
 The IPv4 address and the port to bind to are configured by using the `HOST` and `PORT` variables, respectively.
 
 Default: `127.0.0.1:8080`
