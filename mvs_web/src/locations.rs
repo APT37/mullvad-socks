@@ -4,7 +4,6 @@ use axum::{
     http::StatusCode,
     response::{IntoResponse, Json, Response},
 };
-use axum_macros::debug_handler;
 use serde::Deserialize;
 use tokio::sync::watch::Receiver;
 
@@ -22,7 +21,7 @@ pub enum Type {
 }
 
 // list locations
-#[debug_handler]
+#[axum_macros::debug_handler]
 pub async fn locations(
     State(data): State<Receiver<ProxyData>>,
     Query(ltype): Query<LType>,

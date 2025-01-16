@@ -3,7 +3,6 @@ use axum::{
     extract::{Query, State},
     response::{IntoResponse, Json, Response},
 };
-use axum_macros::debug_handler;
 use mvs_lib::{Filter, Offline, Style, DEFAULT_WEIGHT};
 use serde::Deserialize;
 use tokio::sync::watch::Receiver;
@@ -20,7 +19,7 @@ pub struct Params {
     port: Option<bool>,
 }
 
-#[debug_handler]
+#[axum_macros::debug_handler]
 pub async fn filter(
     State(data): State<Receiver<ProxyData>>,
     Query(params): Query<Params>,

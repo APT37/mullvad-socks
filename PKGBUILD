@@ -1,5 +1,5 @@
 pkgname=mullvad-socks
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Filter Mullvad's SOCKS5 proxies by country, city, datacenter (weight and online status are not yet supported)"
 arch=('any')
