@@ -1,8 +1,11 @@
 use clap::{arg, Parser, ValueEnum};
 use mvs_lib::{Filter, Offline, Proxy, Style, API_URL, DEFAULT_WEIGHT};
+use rand::Rng;
 use reqwest::blocking;
+use serde_json::json;
 use std::{error::Error, fmt};
 
+#[allow(clippy::struct_excessive_bools)]
 #[derive(Debug, Parser)]
 #[command(version, about)]
 struct Config {
@@ -35,6 +38,9 @@ struct Config {
 
     #[arg(short, long, help = "Format output as JSON")]
     json: bool,
+
+    #[arg(short, long, help = "Print a single, randomly chosen proxy")]
+    random: bool,
 }
 
 #[derive(Debug, Clone, ValueEnum)]
@@ -136,7 +142,7 @@ impl Config {
 fn main() -> Result<(), Box<dyn Error>> {
     let config = Config::parse();
 
-    let proxies: Vec<Proxy> = blocking::get(API_URL)?.json()?;
+    let proxies: Vec<_> = blocking::get(API_URL)?.json()?;
 
     let list = if let Some(location_type) = config.locations {
         match location_type {
@@ -145,18 +151,26 @@ fn main() -> Result<(), Box<dyn Error>> {
             Locator::Datacenters => Proxy::datacenters(&proxies),
         }
     } else {
-        config
+        let filtered = config
             .to_filter()
             .apply(proxies)
             .into_iter()
-            .collect::<Vec<String>>()
+            .collect::<Vec<String>>();
+
+        if config.random && !filtered.is_empty() {
+            vec![filtered[rand::rng().random_range(0..filtered.len())].clone()]
+        } else {
+            filtered
+        }
     };
 
-    if config.json {
-        println!("{}", serde_json::json!(list));
-    } else {
-        println!("{}", list.join("\n"));
-    }
+    println!("{}", {
+        if config.json {
+            json!(list).to_string()
+        } else {
+            list.join("\n")
+        }
+    });
 
     Ok(())
 }
