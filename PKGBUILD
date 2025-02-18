@@ -1,6 +1,6 @@
 pkgname=mullvad-socks
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Filter Mullvad's SOCKS5 proxies by country, city, datacenter, weight and online status"
 arch=('x86_64')
 url="https://git.nospy.in/Rust/$pkgname"
