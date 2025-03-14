@@ -6,10 +6,6 @@ description.workspace = true
 readme.workspace = true
 keywords = ["mullvad", "socks5", "filter", "api", "json"]
 
-[lib]
-name = "mvs_lib"
-path = "mvs_lib.rs"
-
 [dependencies]
 deunicode = "1.6.*"
 serde = { version = "1.0.*", features = ["derive"] }
@@ -21,3 +17,7 @@ reqwest = { version = "0.12.*", default-features = false, features = [
     "json",
     "rustls-tls",
 ] }
+
+[lib]
+name = "mvs_lib"
+path = "mvs_lib.rs"

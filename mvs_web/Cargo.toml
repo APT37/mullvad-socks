@@ -28,3 +28,7 @@ tokio = { version = "1.43.*", default-features = false, features = [
     "macros",
     "rt-multi-thread",
 ] }
+
+[[bin]]
+name = "mvs-web"
+path = "src/main.rs"
