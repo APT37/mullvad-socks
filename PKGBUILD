@@ -7,11 +7,11 @@ arch=('x86_64')
 url="https://git.nospy.in/Rust/$pkgname"
 backup=("etc/init.d/$pkgname")
 
-package_cli() {
+package_mvs-cli() {
   install -Dm755 "$startdir/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
-package_web() {
+package_mvs-web() {
   install -Dm755 "$startdir/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm755 "$startdir/mvs_web/service.rc" "$pkgdir/etc/init.d/$pkgname"
 }
