@@ -1,11 +1,10 @@
 pkgbase=mullvad-socks
 pkgname=('mvs-cli' 'mvs-web')
 pkgver=1.1.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Filter Mullvad's SOCKS5 proxies by country, city, datacenter, weight and online status"
 arch=('x86_64')
 url="https://git.nospy.in/Rust/$pkgname"
-# backup=()
 
 package_mvs-cli() {
   install -Dm755 "$startdir/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
