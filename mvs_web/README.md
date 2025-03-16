@@ -9,7 +9,7 @@ Default: `127.0.0.1:8080`
 #### `/locations` lists available locations by type [`country`, `city`, `datacenter`]
 
 ```fish
-curl 127.0.0.1:8080/locations?type=country
+curl 127.0.0.1:8080/locations?type=city
 
 ["adelaide","amsterdam","...","zagreb","zurich"]
 ```
