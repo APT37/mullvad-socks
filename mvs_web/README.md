@@ -1,6 +1,6 @@
 ## Mullvad Socks Proxy Filter (HTTP API)
 
-The IPv4 address and the port to bind to are configured by using the `HOST` and `PORT` variables, respectively.
+The IPv4 address and port to bind to are configured via the `HOST` and `PORT` environment variables.
 
 Default: `127.0.0.1:8080`
 
