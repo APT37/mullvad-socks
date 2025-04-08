@@ -3,7 +3,7 @@ resolver = "2"
 members = ["mvs_cli", "mvs_lib", "mvs_web"]
 
 [workspace.package]
-edition = "2021"
+edition = "2024"
 description = "Filter Mullvad's SOCKS5 proxies by country, city, datacenter, weight and online status"
 readme = "README.md"
 
