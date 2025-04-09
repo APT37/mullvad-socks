@@ -1,8 +1,8 @@
 use crate::proxydata::ProxyData;
 use axum::{
-    extract::{Query, State},
+    extract::{ Query, State },
     http::StatusCode,
-    response::{IntoResponse, Json, Response},
+    response::{ IntoResponse, Json, Response },
 };
 use serde::Deserialize;
 use tokio::sync::watch::Receiver;
@@ -24,7 +24,7 @@ pub enum Type {
 #[axum_macros::debug_handler]
 pub async fn locations(
     State(data): State<Receiver<ProxyData>>,
-    Query(ltype): Query<LType>,
+    Query(ltype): Query<LType>
 ) -> Response {
     let locations = match ltype.r#type {
         Type::Country => data.borrow().locations.countries.clone(),

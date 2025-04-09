@@ -1,4 +1,4 @@
-use mvs_lib::{Proxy, API_URL};
+use mvs_lib::{ Proxy, API_URL };
 use reqwest::blocking::Client;
 
 #[derive(Debug, Clone, Default)]

@@ -1,7 +1,7 @@
-use axum::response::{IntoResponse, Json, Response};
+use axum::response::{ IntoResponse, Json, Response };
+use const_format::formatcp;
 
-const VERSION: &str =
-    const_format::formatcp!("{} v{}", env!("CARGO_PKG_NAME"), env!("CARGO_PKG_VERSION"));
+const VERSION: &str = formatcp!("{} v{}", env!("CARGO_PKG_NAME"), env!("CARGO_PKG_VERSION"));
 
 #[derive(serde::Serialize)]
 struct Version {

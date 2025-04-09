@@ -1,11 +1,8 @@
-use axum::{routing::get, Router};
-use log::{error, info};
+use axum::{ routing::get, Router };
+use log::{ error, info };
 use proxydata::ProxyData;
-use std::{io, net::Ipv4Addr, thread, time::Duration};
-use tokio::{
-    net::TcpListener,
-    sync::watch::{channel, Sender},
-};
+use std::{ io, net::Ipv4Addr, thread, time::Duration };
+use tokio::{ net::TcpListener, sync::watch::{ channel, Sender } };
 
 mod env;
 mod filter;
@@ -21,7 +18,8 @@ async fn main() -> io::Result<()> {
     let (tx, rx) = channel(ProxyData::default());
 
     // start updater job in background thread
-    thread::Builder::new()
+    thread::Builder
+        ::new()
         .name("update_thread".to_string())
         .spawn(|| update(tx))?;
 

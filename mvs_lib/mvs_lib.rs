@@ -1,5 +1,5 @@
 #![allow(clippy::must_use_candidate)]
-use serde::{Deserialize, Deserializer};
+use serde::{ Deserialize, Deserializer };
 
 pub const API_URL: &str = "https://api.mullvad.net/network/v1-beta1/socks-proxies";
 
@@ -47,9 +47,7 @@ impl Proxy {
 
             LType::City => proxies.map(|proxy| proxy.city().to_string()).collect(),
 
-            LType::Datacenter => proxies
-                .map(|proxy| proxy.datacenter().to_string())
-                .collect(),
+            LType::Datacenter => proxies.map(|proxy| proxy.datacenter().to_string()).collect(),
         };
 
         locations.sort();
@@ -76,10 +74,7 @@ pub struct Location {
     code: String,
 }
 
-fn make_uniform<'de, D>(deserializer: D) -> Result<String, D::Error>
-where
-    D: Deserializer<'de>,
-{
+fn make_uniform<'de, D>(deserializer: D) -> Result<String, D::Error> where D: Deserializer<'de> {
     let mut s = String::deserialize(deserializer)?;
 
     // split at ',' to remove US state identifiers
@@ -257,24 +252,19 @@ impl Filter {
 
         // collect proxy IPs/hostnames
         let proxies: Vec<Host> = match self.style {
-            Style::Hostname => proxies
-                // some proxies do not have an FQDN hostname,
-                // so this list may be incomplete.
-                // use V4/V6 to get all available proxies.
-                .filter_map(|proxy| {
-                    proxy
-                        .hostname
-                        .map(|hostname| Host::new(hostname, proxy.port))
-                })
-                .collect(),
+            Style::Hostname =>
+                proxies
+                    // some proxies do not have an FQDN hostname,
+                    // so this list may be incomplete.
+                    // use V4/V6 to get all available proxies.
+                    .filter_map(|proxy| {
+                        proxy.hostname.map(|hostname| Host::new(hostname, proxy.port))
+                    })
+                    .collect(),
 
-            Style::V6 => proxies
-                .map(|proxy| Host::new(proxy.ipv6_address, proxy.port))
-                .collect(),
+            Style::V6 => proxies.map(|proxy| Host::new(proxy.ipv6_address, proxy.port)).collect(),
 
-            Style::V4 => proxies
-                .map(|proxy| Host::new(proxy.ipv4_address, proxy.port))
-                .collect(),
+            Style::V4 => proxies.map(|proxy| Host::new(proxy.ipv4_address, proxy.port)).collect(),
         };
 
         // conditionally add port
@@ -284,7 +274,10 @@ impl Filter {
                 .map(|host| format!("{}:{}", host.hostname, host.port))
                 .collect()
         } else {
-            proxies.into_iter().map(|host| host.hostname).collect()
+            proxies
+                .into_iter()
+                .map(|host| host.hostname)
+                .collect()
         };
 
         // conditionally add scheme
@@ -301,7 +294,7 @@ impl Filter {
 
 #[cfg(test)]
 mod tests {
-    use crate::{Filter, Proxy, API_URL};
+    use crate::{ Filter, Proxy, API_URL };
     use reqwest::blocking::Client;
 
     #[test]

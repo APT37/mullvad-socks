@@ -1,9 +1,9 @@
-use clap::{arg, Parser, ValueEnum};
-use mvs_lib::{Filter, Offline, Proxy, Style, API_URL, DEFAULT_WEIGHT};
+use clap::{ arg, Parser, ValueEnum };
+use mvs_lib::{ Filter, Offline, Proxy, Style, API_URL, DEFAULT_WEIGHT };
 use rand::Rng;
 use reqwest::blocking;
 use serde_json::json;
-use std::{error::Error, fmt};
+use std::{ error::Error, fmt };
 
 #[allow(clippy::struct_excessive_bools)]
 #[derive(Debug, Parser)]
@@ -151,11 +151,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             Locator::Datacenters => Proxy::datacenters(&proxies),
         }
     } else {
-        let filtered = config
-            .to_filter()
-            .apply(proxies)
-            .into_iter()
-            .collect::<Vec<String>>();
+        let filtered = config.to_filter().apply(proxies).into_iter().collect::<Vec<String>>();
 
         if config.random && !filtered.is_empty() {
             vec![filtered[rand::rng().random_range(0..filtered.len())].clone()]
@@ -165,11 +161,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     };
 
     println!("{}", {
-        if config.json {
-            json!(list).to_string()
-        } else {
-            list.join("\n")
-        }
+        if config.json { json!(list).to_string() } else { list.join("\n") }
     });
 
     Ok(())
