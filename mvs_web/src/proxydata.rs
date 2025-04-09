@@ -1,5 +1,5 @@
 use mvs_lib::{ Proxy, API_URL };
-use reqwest::blocking::Client;
+use reqwest::{ blocking, Error };
 
 #[derive(Debug, Clone, Default)]
 pub struct ProxyData {
@@ -25,9 +25,9 @@ impl Locations {
 }
 
 impl ProxyData {
-    pub fn new() -> Result<Self, reqwest::Error> {
+    pub fn new() -> Result<Self, Error> {
         // fetch latest proxy list
-        let proxies = Client::new().get(API_URL).send()?.json::<Vec<Proxy>>()?;
+        let proxies = blocking::get(API_URL)?.json::<Vec<Proxy>>()?;
 
         // extract locations from proxy list
         let locations = Locations::new(&proxies);
