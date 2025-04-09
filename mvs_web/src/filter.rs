@@ -4,7 +4,7 @@ use mvs_lib::{ Filter, Offline, Style, DEFAULT_WEIGHT };
 use serde::Deserialize;
 use tokio::sync::watch::Receiver;
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize)]
 pub struct Params {
     cities: Option<String>,
     countries: Option<String>,

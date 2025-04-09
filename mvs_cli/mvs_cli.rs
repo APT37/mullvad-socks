@@ -6,7 +6,7 @@ use serde_json::json;
 use std::{ error::Error, fmt };
 
 #[allow(clippy::struct_excessive_bools)]
-#[derive(Debug, Parser)]
+#[derive(Parser)]
 #[command(version, about)]
 struct Config {
     #[arg(short = 'C', long, help = "List of countries (see '-l countries')")]
@@ -43,7 +43,7 @@ struct Config {
     random: bool,
 }
 
-#[derive(Debug, Clone, ValueEnum)]
+#[derive(Clone, ValueEnum)]
 enum OfflineStatus {
     Hide,
     Show,
@@ -72,7 +72,7 @@ impl fmt::Display for OfflineStatus {
     }
 }
 
-#[derive(Debug, Clone, ValueEnum)]
+#[derive(Clone, ValueEnum)]
 enum PrintStyle {
     V4,
     V6,
@@ -101,7 +101,7 @@ impl fmt::Display for PrintStyle {
     }
 }
 
-#[derive(Debug, Clone, ValueEnum)]
+#[derive(Clone, ValueEnum)]
 enum Locator {
     Countries,
     Cities,

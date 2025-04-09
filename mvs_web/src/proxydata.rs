@@ -1,7 +1,7 @@
 use mvs_lib::{ Proxy, API_URL };
 use reqwest::{ blocking, Error };
 
-#[derive(Debug, Clone, Default)]
+#[derive(Clone, Default)]
 pub struct ProxyData {
     pub proxies: Vec<Proxy>,
     pub locations: Locations,

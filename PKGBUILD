@@ -1,6 +1,6 @@
 pkgbase=mullvad-socks
 pkgname=('mvs-cli' 'mvs-web')
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Filter Mullvad's SOCKS5 proxies by country, city, datacenter, weight and online status"
 arch=('x86_64')

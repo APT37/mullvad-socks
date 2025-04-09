@@ -3,7 +3,7 @@ use serde::{ Deserialize, Deserializer };
 
 pub const API_URL: &str = "https://api.mullvad.net/network/v1-beta1/socks-proxies";
 
-#[derive(Debug, Clone, Deserialize, Eq, Ord, PartialEq, PartialOrd)]
+#[derive(Clone, Deserialize, Eq, Ord, PartialEq, PartialOrd)]
 pub struct Proxy {
     online: bool,
     hostname: Option<String>,
@@ -62,7 +62,7 @@ enum LType {
     Datacenter,
 }
 
-#[derive(Debug, Clone, Deserialize, Eq, Ord, PartialEq, PartialOrd)]
+#[derive(Clone, Deserialize, Eq, Ord, PartialEq, PartialOrd)]
 pub struct Location {
     #[serde(deserialize_with = "make_uniform")]
     country: String,
@@ -88,7 +88,7 @@ fn make_uniform<'de, D>(deserializer: D) -> Result<String, D::Error> where D: De
     Ok(s)
 }
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Clone, PartialEq)]
 pub struct Filter {
     city: Option<Vec<String>>,
     country: Option<Vec<String>>,
@@ -117,7 +117,7 @@ impl Default for Filter {
     }
 }
 
-#[derive(Debug, Clone, Copy, Deserialize, Default, PartialEq)]
+#[derive(Clone, Copy, Deserialize, Default, PartialEq)]
 pub enum Offline {
     #[default]
     Hide,
@@ -125,7 +125,7 @@ pub enum Offline {
     Only,
 }
 
-#[derive(Debug, Clone, Copy, Deserialize, Default, PartialEq)]
+#[derive(Clone, Copy, Deserialize, Default, PartialEq)]
 pub enum Style {
     #[default]
     V4,
@@ -133,7 +133,7 @@ pub enum Style {
     Hostname,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Clone)]
 struct Host {
     hostname: String,
     port: u16,
