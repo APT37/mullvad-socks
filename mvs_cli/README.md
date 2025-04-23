@@ -1,6 +1,6 @@
 ## Mullvad Socks Proxy Filter (CLI)
 
-`mvs_cli [OPTIONS]`
+`mvs-cli [OPTIONS]`
 
 *While you can use multiple types of location identifiers in a single query, it's not advised to do so, as proxies are filtered level by level - `country` > `city` > `datacenter` - this means only proxies matching all given levels will be left in the list.*
 
