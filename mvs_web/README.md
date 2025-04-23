@@ -20,16 +20,28 @@ curl 127.0.0.1:8080/locations?type=city
 <!-- While you can use multiple types of location identifiers in a single query, it's not advised to do so, as proxies are filtered by level, as in *country > city > datacenter*. This means only queries matching all levels will be left in the list. -->
 While you can use multiple types of location identifiers in a single query, it's not advised to do so, as proxies are filtered by level, as in *country > city*. This means only queries matching all levels will be left in the list.
 
-| Parameter | Value | Default |
-| --- | --- | --- |
-| `countries` | list of countries | - |
-| `cities` | list of cities | - |
-<!-- | `datacenters` | list of datacenters | - | -->
-| `weight` | 0-65535 | 100 |
-| `offline` | Hide, Show, Only | Hide |
-| `style` | V4, V6, Hostname | V4 |
-| `scheme` | true, false | false |
-| `port` | true, false | false |
+<!-- 
+| Parameter     | Value               | Default |
+| ------------- | ------------------- | ------- |
+| `countries`   | list of countries   | -       |
+| `cities`      | list of cities      | -       |
+| `datacenters` | list of datacenters | -       |
+| `weight`      | 0-65535             | 100     |
+| `offline`     | Hide, Show, Only    | Hide    |
+| `style`       | V4, V6, Hostname    | V4      |
+| `scheme`      | true, false         | false   |
+| `port`        | true, false         | false   |
+-->
+
+| Parameter   | Value             | Default |
+| ----------- | ----------------- | ------- |
+| `countries` | list of countries | -       |
+| `cities`    | list of cities    | -       |
+| `weight`    | 0-65535           | 100     |
+| `offline`   | Hide, Show, Only  | Hide    |
+| `style`     | V4, V6, Hostname  | V4      |
+| `scheme`    | true, false       | false   |
+| `port`      | true, false       | false   |
 
 Default filters and formatting:
 
