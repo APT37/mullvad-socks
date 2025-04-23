@@ -15,8 +15,8 @@ struct Config {
     #[arg(short, long, help = "List of cities (see '-l cities')")]
     cities: Option<String>,
 
-    #[arg(short, long, help = "List of datacenters (see '-l datacenters')")]
-    datacenters: Option<String>,
+    // #[arg(short, long, help = "List of datacenters (see '-l datacenters')")]
+    // datacenters: Option<String>,
 
     #[arg(short, long, help = "Weight limit (inclusive)", default_value_t = DEFAULT_WEIGHT)]
     weight: u16,
@@ -105,7 +105,7 @@ impl fmt::Display for PrintStyle {
 enum Locator {
     Countries,
     Cities,
-    Datacenters,
+    // Datacenters,
 }
 
 impl Config {
@@ -124,9 +124,9 @@ impl Config {
             filter.set_cities(&split_list(cities));
         }
 
-        if let Some(datacenters) = &self.datacenters {
-            filter.set_datacenters(&split_list(datacenters));
-        }
+        // if let Some(datacenters) = &self.datacenters {
+        //     filter.set_datacenters(&split_list(datacenters));
+        // }
 
         filter
             .set_weight(self.weight)
@@ -148,7 +148,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         match location_type {
             Locator::Countries => Proxy::countries(&proxies),
             Locator::Cities => Proxy::cities(&proxies),
-            Locator::Datacenters => Proxy::datacenters(&proxies),
+            // Locator::Datacenters => Proxy::datacenters(&proxies),
         }
     } else {
         let filtered = config.to_filter().apply(proxies).into_iter().collect::<Vec<String>>();

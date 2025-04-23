@@ -11,7 +11,7 @@ pub struct ProxyData {
 pub struct Locations {
     pub countries: Vec<String>,
     pub cities: Vec<String>,
-    pub datacenters: Vec<String>,
+    // pub datacenters: Vec<String>,
 }
 
 impl Locations {
@@ -19,7 +19,7 @@ impl Locations {
         Self {
             countries: Proxy::countries(proxies),
             cities: Proxy::cities(proxies),
-            datacenters: Proxy::datacenters(proxies),
+            // datacenters: Proxy::datacenters(proxies),
         }
     }
 }

@@ -17,7 +17,7 @@ pub struct LType {
 pub enum Type {
     Country,
     City,
-    Datacenter,
+    // Datacenter,
 }
 
 // list locations
@@ -29,7 +29,7 @@ pub async fn locations(
     let locations = match ltype.r#type {
         Type::Country => data.borrow().locations.countries.clone(),
         Type::City => data.borrow().locations.cities.clone(),
-        Type::Datacenter => data.borrow().locations.datacenters.clone(),
+        // Type::Datacenter => data.borrow().locations.datacenters.clone(),
     };
 
     if locations.is_empty() {

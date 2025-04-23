@@ -23,9 +23,9 @@ impl Proxy {
         &self.location.city
     }
 
-    pub fn datacenter(&self) -> &str {
-        &self.location.code
-    }
+    // pub fn datacenter(&self) -> &str {
+    //     &self.location.code
+    // }
 
     pub fn countries(proxies: &[Self]) -> Vec<String> {
         Self::locations(proxies, &LType::Country)
@@ -35,9 +35,9 @@ impl Proxy {
         Self::locations(proxies, &LType::City)
     }
 
-    pub fn datacenters(proxies: &[Self]) -> Vec<String> {
-        Self::locations(proxies, &LType::Datacenter)
-    }
+    // pub fn datacenters(proxies: &[Self]) -> Vec<String> {
+    //     Self::locations(proxies, &LType::Datacenter)
+    // }
 
     fn locations(proxies: &[Self], ltype: &LType) -> Vec<String> {
         let proxies = proxies.iter();
@@ -47,7 +47,7 @@ impl Proxy {
 
             LType::City => proxies.map(|proxy| proxy.city().to_string()).collect(),
 
-            LType::Datacenter => proxies.map(|proxy| proxy.datacenter().to_string()).collect(),
+            // LType::Datacenter => proxies.map(|proxy| proxy.datacenter().to_string()).collect(),
         };
 
         locations.sort();
@@ -59,7 +59,7 @@ impl Proxy {
 enum LType {
     Country,
     City,
-    Datacenter,
+    // Datacenter,
 }
 
 #[derive(Clone, Deserialize, Eq, Ord, PartialEq, PartialOrd)]
@@ -92,7 +92,7 @@ fn make_uniform<'de, D>(deserializer: D) -> Result<String, D::Error> where D: De
 pub struct Filter {
     city: Option<Vec<String>>,
     country: Option<Vec<String>>,
-    datacenter: Option<Vec<String>>,
+    // datacenter: Option<Vec<String>>,
     weight: u16,
     offline: Offline,
     style: Style,
@@ -107,7 +107,7 @@ impl Default for Filter {
         Self {
             city: None,
             country: None,
-            datacenter: None,
+            // // datacenter: None,
             weight: DEFAULT_WEIGHT,
             offline: Offline::default(),
             style: Style::default(),
@@ -160,10 +160,10 @@ impl Filter {
         self
     }
 
-    pub fn set_datacenters(&mut self, datacenters: &[String]) -> &mut Self {
-        self.datacenter = Some(datacenters.to_vec());
-        self
-    }
+    // pub fn set_datacenters(&mut self, datacenters: &[String]) -> &mut Self {
+    //     self.datacenter = Some(datacenters.to_vec());
+    //     self
+    // }
 
     pub fn set_weight(&mut self, weight: u16) -> &mut Self {
         self.weight = weight;
@@ -206,13 +206,13 @@ impl Filter {
         proxies
     }
 
-    fn by_datacenter(&self, mut proxies: Vec<Proxy>) -> Vec<Proxy> {
-        if let Some(datacenters) = &self.datacenter {
-            proxies.retain(|proxy| datacenters.contains(&proxy.location.code));
-        }
+    // fn by_datacenter(&self, mut proxies: Vec<Proxy>) -> Vec<Proxy> {
+    //     if let Some(datacenters) = &self.datacenter {
+    //         proxies.retain(|proxy| datacenters.contains(&proxy.location.code));
+    //     }
 
-        proxies
-    }
+    //     proxies
+    // }
 
     fn by_weight(&self, mut proxies: Vec<Proxy>) -> Vec<Proxy> {
         proxies.retain(|proxy| proxy.weight <= self.weight);
@@ -239,7 +239,7 @@ impl Filter {
         // filter out unwanted proxies
         proxies = self.by_country(proxies);
         proxies = self.by_city(proxies);
-        proxies = self.by_datacenter(proxies);
+        // proxies = self.by_datacenter(proxies);
         proxies = self.by_weight(proxies);
         proxies = self.by_offline(proxies);
 
