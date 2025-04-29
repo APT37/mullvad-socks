@@ -8,7 +8,7 @@ use tokio::sync::watch::Receiver;
 pub struct Params {
     cities: Option<String>,
     countries: Option<String>,
-    datacenters: Option<String>,
+    // datacenters: Option<String>,
     weight: Option<u16>,
     offline: Option<Offline>,
     style: Option<Style>,
@@ -39,11 +39,11 @@ pub async fn filter(
         }
     }
 
-    if let Some(datacenters) = params.datacenters.map(splitter) {
-        if !datacenters.is_empty() {
-            filter.set_cities(&datacenters);
-        }
-    }
+    // if let Some(datacenters) = params.datacenters.map(splitter) {
+    //     if !datacenters.is_empty() {
+    //         filter.set_cities(&datacenters);
+    //     }
+    // }
 
     filter
         .set_weight(params.weight.unwrap_or(DEFAULT_WEIGHT))

@@ -7,12 +7,12 @@ use axum::{
 use serde::Deserialize;
 use tokio::sync::watch::Receiver;
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Copy, Deserialize)]
 pub struct LType {
     r#type: Type,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Copy, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum Type {
     Country,

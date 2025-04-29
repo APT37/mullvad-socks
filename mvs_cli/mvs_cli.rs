@@ -43,7 +43,7 @@ struct Config {
     random: bool,
 }
 
-#[derive(Clone, ValueEnum)]
+#[derive(Clone, Copy, ValueEnum)]
 enum OfflineStatus {
     Hide,
     Show,
@@ -51,7 +51,7 @@ enum OfflineStatus {
 }
 
 impl OfflineStatus {
-    fn to_lib_type(&self) -> Offline {
+    fn to_lib_type(self) -> Offline {
         match self {
             Self::Hide => Offline::Hide,
             Self::Show => Offline::Show,
@@ -72,7 +72,7 @@ impl fmt::Display for OfflineStatus {
     }
 }
 
-#[derive(Clone, ValueEnum)]
+#[derive(Clone, Copy, ValueEnum)]
 enum PrintStyle {
     V4,
     V6,
@@ -80,7 +80,7 @@ enum PrintStyle {
 }
 
 impl PrintStyle {
-    fn to_lib_type(&self) -> Style {
+    fn to_lib_type(self) -> Style {
         match self {
             Self::V4 => Style::V4,
             Self::V6 => Style::V6,
@@ -101,7 +101,7 @@ impl fmt::Display for PrintStyle {
     }
 }
 
-#[derive(Clone, ValueEnum)]
+#[derive(Clone, Copy, ValueEnum)]
 enum Locator {
     Countries,
     Cities,

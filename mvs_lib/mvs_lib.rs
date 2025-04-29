@@ -28,18 +28,18 @@ impl Proxy {
     // }
 
     pub fn countries(proxies: &[Self]) -> Vec<String> {
-        Self::locations(proxies, &LType::Country)
+        Self::locations(proxies, LType::Country)
     }
 
     pub fn cities(proxies: &[Self]) -> Vec<String> {
-        Self::locations(proxies, &LType::City)
+        Self::locations(proxies, LType::City)
     }
 
     // pub fn datacenters(proxies: &[Self]) -> Vec<String> {
-    //     Self::locations(proxies, &LType::Datacenter)
+    //     Self::locations(proxies, LType::Datacenter)
     // }
 
-    fn locations(proxies: &[Self], ltype: &LType) -> Vec<String> {
+    fn locations(proxies: &[Self], ltype: LType) -> Vec<String> {
         let proxies = proxies.iter();
 
         let mut locations: Vec<String> = match ltype {
@@ -56,6 +56,7 @@ impl Proxy {
     }
 }
 
+#[derive(Clone, Copy)]
 enum LType {
     Country,
     City,
@@ -70,8 +71,8 @@ pub struct Location {
     #[serde(deserialize_with = "make_uniform")]
     city: String,
 
-    #[serde(deserialize_with = "make_uniform")]
-    code: String,
+    // #[serde(deserialize_with = "make_uniform")]
+    // code: String,
 }
 
 fn make_uniform<'de, D>(deserializer: D) -> Result<String, D::Error> where D: Deserializer<'de> {
