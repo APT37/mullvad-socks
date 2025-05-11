@@ -4,15 +4,16 @@ use axum::{
     http::StatusCode,
     response::{ IntoResponse, Json, Response },
 };
+use axum_macros::debug_handler;
 use serde::Deserialize;
 use tokio::sync::watch::Receiver;
 
-#[derive(Debug, Clone, Copy, Deserialize)]
+#[derive(Deserialize, Clone, Copy)]
 pub struct LType {
     r#type: Type,
 }
 
-#[derive(Debug, Clone, Copy, Deserialize)]
+#[derive(Deserialize, Clone, Copy)]
 #[serde(rename_all = "lowercase")]
 pub enum Type {
     Country,
@@ -21,7 +22,7 @@ pub enum Type {
 }
 
 // list locations
-#[axum_macros::debug_handler]
+#[debug_handler]
 pub async fn locations(
     State(data): State<Receiver<ProxyData>>,
     Query(ltype): Query<LType>

@@ -8,7 +8,6 @@ mod env;
 mod filter;
 mod locations;
 mod proxydata;
-mod version;
 
 #[tokio::main]
 async fn main() -> io::Result<()> {
@@ -33,9 +32,8 @@ async fn main() -> io::Result<()> {
     let listener = TcpListener::bind(address).await?;
 
     let app = Router::new()
-        .route("/proxies", get(filter::filter))
         .route("/locations", get(locations::locations))
-        .route("/version", get(version::version))
+        .route("/proxies", get(filter::filter))
         .with_state(rx);
 
     axum::serve(listener, app).await

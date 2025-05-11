@@ -7,7 +7,7 @@ pub struct ProxyData {
     pub locations: Locations,
 }
 
-#[derive(Debug, Clone, Default)]
+#[derive(Clone, Default)]
 pub struct Locations {
     pub countries: Vec<String>,
     pub cities: Vec<String>,
