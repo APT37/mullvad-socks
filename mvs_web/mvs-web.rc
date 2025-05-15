@@ -6,7 +6,7 @@ command_user="nobody"
 supervisor="supervise-daemon"
 
 # change this to bind on a different port
-export PORT=8080
+export PORT=9292
 
 depend() {
     need net
