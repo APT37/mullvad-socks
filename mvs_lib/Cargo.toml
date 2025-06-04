@@ -4,7 +4,7 @@ version = "1.6.1"
 edition.workspace = true
 description.workspace = true
 readme.workspace = true
-keywords = ["mullvad", "socks5", "filter", "api", "json"]
+keywords.workspace = true
 
 [dependencies]
 deunicode.workspace = true

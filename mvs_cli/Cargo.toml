@@ -4,7 +4,7 @@ version = "0.7.1"
 edition.workspace = true
 description.workspace = true
 readme.workspace = true
-keywords = ["mullvad", "socks5", "proxy", "filter", "cli"]
+keywords.workspace = true
 
 [dependencies]
 clap.workspace = true
