@@ -1,5 +1,5 @@
-use clap::{ arg, Parser, ValueEnum };
-use mvs_lib::{ Filter, Offline, Proxy, Style, API_URL, DEFAULT_WEIGHT };
+use clap::{ Parser, ValueEnum, arg };
+use mvs_lib::{ API_URL, DEFAULT_WEIGHT, Filter, Offline, Proxy, Style };
 use rand::Rng;
 use reqwest::blocking;
 use serde_json::json;
@@ -17,7 +17,6 @@ struct Config {
 
     // #[arg(short, long, help = "List of datacenters (see '-l datacenters')")]
     // datacenters: Option<String>,
-
     #[arg(short, long, help = "Weight limit (inclusive)", default_value_t = DEFAULT_WEIGHT)]
     weight: u16,
 

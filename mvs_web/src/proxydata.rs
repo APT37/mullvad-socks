@@ -1,5 +1,5 @@
-use mvs_lib::{ Proxy, API_URL };
-use reqwest::{ blocking, Error };
+use mvs_lib::{ API_URL, Proxy };
+use reqwest::{ Error, blocking };
 
 #[derive(Clone, Default)]
 pub struct ProxyData {

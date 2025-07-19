@@ -46,7 +46,6 @@ impl Proxy {
             LType::Country => proxies.map(|proxy| proxy.country().to_string()).collect(),
 
             LType::City => proxies.map(|proxy| proxy.city().to_string()).collect(),
-
             // LType::Datacenter => proxies.map(|proxy| proxy.datacenter().to_string()).collect(),
         };
 
@@ -70,7 +69,6 @@ pub struct Location {
 
     #[serde(deserialize_with = "make_uniform")]
     city: String,
-
     // #[serde(deserialize_with = "make_uniform")]
     // code: String,
 }
@@ -295,7 +293,7 @@ impl Filter {
 
 #[cfg(test)]
 mod tests {
-    use crate::{ Filter, Proxy, API_URL };
+    use crate::{ API_URL, Filter, Proxy };
     use reqwest::blocking::Client;
 
     #[test]

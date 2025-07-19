@@ -1,8 +1,8 @@
-use axum::{ routing::get, Router };
+use axum::{ Router, routing::get };
 use log::{ error, info };
 use proxydata::ProxyData;
 use std::{ io, net::Ipv4Addr, thread, time::Duration };
-use tokio::{ net::TcpListener, sync::watch::{ channel, Sender } };
+use tokio::{ net::TcpListener, sync::watch::{ Sender, channel } };
 
 mod env;
 mod filter;

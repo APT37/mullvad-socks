@@ -1,7 +1,7 @@
 use crate::proxydata::ProxyData;
 use axum::{ extract::{ Query, State }, response::{ IntoResponse, Json, Response } };
 use axum_macros::debug_handler;
-use mvs_lib::{ Filter, Offline, Style, DEFAULT_WEIGHT };
+use mvs_lib::{ DEFAULT_WEIGHT, Filter, Offline, Style };
 use serde::Deserialize;
 use tokio::sync::watch::Receiver;
 
