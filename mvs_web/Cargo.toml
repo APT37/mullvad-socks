@@ -17,7 +17,7 @@ axum-macros.workspace = true
 const_format.workspace = true
 env_logger.workspace = true
 log.workspace = true
-mvs_lib = { path = "../mvs_lib" }
+mvs_lib.workspace = true
 reqwest.workspace = true
 serde.workspace = true
 tokio.workspace = true

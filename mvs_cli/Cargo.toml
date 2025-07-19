@@ -12,7 +12,7 @@ keywords.workspace = true
 
 [dependencies]
 clap.workspace = true
-mvs_lib = { path = "../mvs_lib" }
+mvs_lib.workspace = true
 rand.workspace = true
 reqwest.workspace = true
 serde_json.workspace = true

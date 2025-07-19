@@ -798,7 +798,7 @@ name = "mvs_cli"
 version = "0.7.1"
 dependencies = [
  "clap",
- "mvs_lib",
+ "mvs_lib 1.6.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "rand",
  "reqwest",
  "serde_json",
@@ -814,6 +814,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "mvs_lib"
+version = "1.6.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f9c3431861953c56bac46c150721ca4c3739498c5ddb76d0cd25a9e1f1471f12"
+dependencies = [
+ "deunicode",
+ "serde",
+]
+
+[[package]]
 name = "mvs_web"
 version = "1.2.0"
 dependencies = [
@@ -823,7 +833,7 @@ dependencies = [
  "const_format",
  "env_logger",
  "log",
- "mvs_lib",
+ "mvs_lib 1.6.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "reqwest",
  "serde",
  "tokio",
