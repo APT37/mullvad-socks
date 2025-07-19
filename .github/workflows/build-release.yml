@@ -47,6 +47,7 @@ jobs:
   publish:
     name: Publish crates
     runs-on: ubuntu-latest
+    environment: default
     needs: release
 
     steps:
