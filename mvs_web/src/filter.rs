@@ -24,7 +24,7 @@ pub async fn filter(
 ) -> Response {
     let proxies = data.borrow().proxies.clone();
 
-    let mut filter = Filter::new();
+    let mut filter = Filter::default();
 
     let splitter = |loc: String| loc.split(',').map(String::from).collect::<Vec<String>>();
 

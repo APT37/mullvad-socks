@@ -113,7 +113,7 @@ impl Config {
             list.trim().split(',').map(String::from).collect()
         }
 
-        let mut filter = Filter::new();
+        let mut filter = Filter::default();
 
         if let Some(countries) = &self.countries {
             filter.set_countries(&split_list(countries));
