@@ -22,7 +22,7 @@ async fn main() -> io::Result<()> {
         .name("update_thread".to_string())
         .spawn(|| update(tx))?;
 
-    let host = env::lookup("HOST", Ipv4Addr::new(127, 0, 0, 1));
+    let host = env::lookup("HOST", Ipv4Addr::LOCALHOST);
     let port = env::lookup("PORT", 8080);
 
     let address = format!("{host}:{port}");

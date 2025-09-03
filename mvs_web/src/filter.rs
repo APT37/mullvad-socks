@@ -28,22 +28,16 @@ pub async fn filter(
 
     let splitter = |loc: String| loc.split(',').map(String::from).collect::<Vec<String>>();
 
-    if let Some(countries) = params.countries.map(splitter) {
-        if !countries.is_empty() {
-            filter.set_countries(&countries);
-        }
+    if let Some(countries) = params.countries.map(splitter) && !countries.is_empty() {
+        filter.set_countries(&countries);
     }
 
-    if let Some(cities) = params.cities.map(splitter) {
-        if !cities.is_empty() {
-            filter.set_cities(&cities);
-        }
+    if let Some(cities) = params.cities.map(splitter) && !cities.is_empty() {
+        filter.set_cities(&cities);
     }
 
-    // if let Some(datacenters) = params.datacenters.map(splitter) {
-    //     if !datacenters.is_empty() {
-    //         filter.set_cities(&datacenters);
-    //     }
+    // if let Some(datacenters) = params.datacenters.map(splitter) && !datacenters.is_empty() {
+    //     filter.set_cities(&datacenters);
     // }
 
     filter
