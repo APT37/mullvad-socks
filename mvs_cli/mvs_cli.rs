@@ -1,4 +1,4 @@
-use clap::{ Parser, ValueEnum, arg };
+use clap::{ Parser, ValueEnum };
 use mvs_lib::{ API_URL, DEFAULT_WEIGHT, Filter, Offline, Proxy, Style };
 use rand::Rng;
 use reqwest::blocking;
