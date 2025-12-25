@@ -6,7 +6,7 @@ description.workspace = true
 homepage.workspace = true
 repository.workspace = true
 readme = "README.md"
-documentation.workspace = true
+documentation = "https://github.com/APT37/mullvad-socks/tree/master/mvs_lib"
 license.workspace = true
 keywords.workspace = true
 
