@@ -5,10 +5,10 @@ members = ["mvs_cli", "mvs_lib", "mvs_web"]
 [workspace.package]
 edition = "2024"
 description = "Filter Mullvad's SOCKS5 proxies by country, city, weight and online status"
-homepage = "https://github.com/APT37/mullvad-socks"
+homepage = "https://github.com/APT37"
 repository = "https://github.com/APT37/mullvad-socks"
 #readme = "README.md"
-documentation = "https://github.com/APT37/mullvad-socks"
+#documentation = "https://github.com/APT37/mullvad-socks"
 license = "MIT-0"
 keywords = ["mullvad", "socks5", "filter", "proxy", "api"]
 
